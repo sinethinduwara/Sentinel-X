@@ -2,8 +2,10 @@
 
 **High-Performance Task-Intelligence Interface for Developers & Cool Hackers.**
 
+
 > *"Because why use a boring to-do list when you can feel like a hacker in a movie?"* ⚡
 
+[Visit my Website](https://sinethinduwara.github.io/Sentinel-X)
 ---
 <img width="1408" height="768" alt="Sentinel-X" src="https://github.com/user-attachments/assets/be69e82f-faa4-40b5-92cf-20409fd24b45" />
 
