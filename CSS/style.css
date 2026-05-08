@@ -228,13 +228,6 @@ body {
 .task-buttons .edit-btn:hover { background: #044663; }
 .task-buttons .delete-btn:hover { background: #8b0000; }
 
-
-.blink-mode {
-    animation: extremeGlitch 0.1s steps(1) infinite;
-    pointer-events: none;
-    overflow: hidden;
-}
-
 .blink-mode {
     animation: extremeGlitch 0.05s steps(2) infinite; 
     pointer-events: none;
