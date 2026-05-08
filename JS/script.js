@@ -228,17 +228,19 @@ if (tasktext === "root--access") {
 });
 
 
-const input = document.getElementById('todo-input');
+const secretInput = document.getElementById('task-input');
 
-input.addEventListener('keyup', function() {
-    if (this.value === 'root--access') {
-        // 1. Blinking effect eka add karanawa
-        document.body.style.animation = "blink 0.1s steps(2, start) infinite";
-        document.body.style.backgroundColor = "black";
+if (secretInput) {
+    secretInput.addEventListener('keyup', function() {
+        if (this.value === 'root--access') {
+            // Blink Effect
+            document.body.classList.add('blink-mode');
+            document.body.style.backgroundColor = "black";
 
-        // 2. Thathpara 1.5kin passe Hacker page ekata yanawa
-        setTimeout(() => {
-            window.location.href = "abc.html"; // Hacker file eke nama
-        }, 1500);
-    }
+            setTimeout(() => {
+                window.location.href = "./abc.html";
+            }, 1500);
+        }
+    });
+}
 });
