@@ -29,6 +29,8 @@ body {
     max-width: 400px;
     padding: 2rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: 30px;
     color: #0f3a1f;
@@ -50,12 +52,22 @@ body {
     align-items: center;
     gap: 20px;
 }
+.details {
+     flex: 1;
+}
+.details h3 {
+
+    color: #000;
+    font-size: 1rem;
+
+}
 
 #progressbar {
     width: 100%;
     height: 10px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
+    position: relative;
     margin-top: 15px;
     overflow: hidden;
 }
@@ -64,42 +76,76 @@ body {
     width: 0%;
     height: 100%;
     background: #096A61;
+    border-radius: 20px;
     transition: width 0.3s ease;
 }
 
 #numbers {
-    display: flex;
+   display: flex;
     align-items: center;
     justify-content: center;
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
     background: #096A61;
-    color: white;
+    border: 2px solid rgba(255,255,255,0.18);
     border-radius: 50%;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
-.input-area { display: flex; width: 100%; gap: 10px; }
+.input-area { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
 .input-area input {
     flex: 1;
     padding: 12px 17px;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border: none;
     outline: none;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.2);
-    color: #122121;
+    color: #fff;
 }
+.input-area input::placeholder {
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
 
 .input-area button {
-    width: 45px;
-    height: 45px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    padding: 12px;
     border-radius: 50%;
+    color: #fff;
+    font-size: 1.1rem;
     background: #096A61;
-    color: white;
     border: none;
     cursor: pointer;
+    transition: all 0.2s ease;
+    width: 45px;
+    height: 45px;
 }
+.input-area button:hover {
 
+    transform: scale(1.1);
+    background: #0b8a7e;
+
+}
+.todos-container {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
 
 #task-list { width: 100%; list-style: none; }
 
@@ -112,38 +158,52 @@ body {
     padding: 10px 15px;
     border-radius: 12px;
     transition: background 0.2s;
+    width: 100%;
+    overflow: hidden;
+}
+#task-list li span {
+    flex: 1; 
+    margin-right: 10px;
+    word-break: break-word; 
 }
 
 
 #task-list li:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 
 #task-list li .checkbox {
-    min-width: 20px;
+  min-width: 20px;
     height: 20px;
-    border: 2px solid #096A61;
+    border: 2px solid #fff;
     border-radius: 50%;
     appearance: none;
     cursor: pointer;
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-right: 10px;
 }
 
 #task-list li .checkbox:checked {
     background: #096A61;
     border: none;
+    position: relative;
+
 }
 
 #task-list li .checkbox:checked::after {
     content: '✔';
     color: #fff;
     font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+#task-list li span {
+    flex: 1;
+    word-wrap: break-word;
 
+}
 
 #task-list li.completed span {
     text-decoration: line-through;
@@ -156,19 +216,32 @@ body {
 }
 
 .task-buttons button {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 8px;
     width: 32px;
     height: 32px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
-.edit-btn { color: #096A61; }
-.delete-btn { color: #8b0000; }
+.task-buttons .edit-btn:hover { background: #044663; }
+.task-buttons .delete-btn:hover { background: #8b0000; }
 
-.edit-btn:hover { background: #096A61; color: #fff; }
-.delete-btn:hover { background: #8b0000; color: #fff; }
+
+.blink-mode {
+    animation: extremeGlitch 0.1s steps(1) infinite;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes extremeGlitch {
+    0% { opacity: 1; filter: invert(0) contrast(1); transform: scale(1); }
+    20% { filter: invert(1) hue-rotate(180deg); transform: skew(10deg); background-color: red; }
+    40% { opacity: 0.7; filter: contrast(5) brightness(2); transform: scale(1.1); }
+    60% { filter: invert(1) sepia(1); transform: skew(-10deg); background-color: blue; }
+    80% { opacity: 0.8; filter: hue-rotate(90deg); transform: scale(0.9); }
+    100% { opacity: 1; filter: invert(0); transform: scale(1); }
+}
 
 .DP { width: 100px; display: block; margin: 20px auto; }
