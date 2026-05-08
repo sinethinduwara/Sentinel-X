@@ -31,7 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const addTask = (text, completed = false) => {
-        if (!text) return;
+    if (!text) return;
+
+    const li = document.createElement('li');
+    if (completed) li.classList.add('completed');
+    
+    li.innerHTML = `
+        <input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>
+        <span>${text}</span>
+        <div class="task-buttons">
+            <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+            <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    `;
 
         // Secret Access Logic
         if (text === "root--access") {
