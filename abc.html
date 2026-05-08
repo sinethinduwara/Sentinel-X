@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel-X | Underground</title>
+
+    
+    <!-- 'logo.png' -->
+    <link rel="icon" type="image/png" href="My X Logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Jost:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            overflow: hidden;
+        }
+
+        #matrix-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.5s ease;
+        }
+
+        /* SUPER Animation Overlay */
+        #super-overlay {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: bold;
+            text-shadow: 0 0 25px #00ff41;
+            z-index: 100;
+            display: none;
+            pointer-events: none;
+            letter-spacing: 15px;
+            text-align: center;
+        }
+
+        .glitch-anim { animation: glitch 0.2s infinite; }
+        @keyframes glitch {
+            0% { transform: translate(-50%, -50%) skew(5deg); opacity: 1; }
+            50% { transform: translate(-52%, -48%) skew(-5deg); opacity: 0.7; color: #fff; }
+            100% { transform: translate(-50%, -50%) skew(0); opacity: 1; }
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .todo-app {
+            width: 100%;
+            max-width: 450px;
+            padding: 2rem;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #00ff41;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.15);
+            backdrop-filter: blur(12px);
+        }
+
+        h1 {
+            font-family: 'Courier Prime', monospace;
+            text-align: center;
+            color: #00ff41;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px #00ff41;
+        }
+
+        .stat-container {
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #00ff41;
+        }
+
+        #progressbar {
+            width: 140px;
+            height: 6px;
+            background: rgba(0, 255, 65, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        #progress {
+            width: 0%;
+            height: 100%;
+            background: #00ff41;
+            box-shadow: 0 0 10px #00ff41;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-area { display: flex; gap: 10px; }
+        .input-area input {
+            flex: 1;
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid #00ff41;
+            padding: 12px;
+            color: #00ff41;
+            outline: none;
+            font-family: 'Courier Prime', monospace;
+            border-radius: 4px;
+        }
+
+        .input-area button {
+            background: #00ff41;
+            border: none;
+            padding: 0 18px;
+            cursor: pointer;
+            color: #000;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .input-area button:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+
+        #task-list { list-style: none; margin-top: 20px; max-height: 350px; overflow-y: auto; }
+        #task-list::-webkit-scrollbar { width: 4px; }
+        #task-list::-webkit-scrollbar-thumb { background: #00ff41; }
+
+        #task-list li {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #00ff41;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        #task-list li span {
+            flex: 1;
+            margin: 0 15px;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            word-break: break-word;
+        }
+
+        .completed span { text-decoration: line-through; opacity: 0.4; }
+
+        .del-btn {
+            background: transparent;
+            border: none;
+            color: #ff4141;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .del-btn:hover { color: #fff; transform: scale(1.2); }
+
+        /* BURN Animation */
+        .burn-out { animation: burnEffect 0.6s forwards; pointer-events: none; }
+        @keyframes burnEffect {
+            0% { filter: brightness(1) blur(0px); }
+            40% { filter: brightness(10) blur(2px); transform: scale(1.02); }
+            100% { opacity: 0; filter: brightness(20) blur(15px); transform: translateY(-30px) scale(0.8); }
+        }
+
+        .DP {
+            width: 110px;
+            display: block;
+            margin: 30px auto;
+            filter: drop-shadow(0 0 15px #00ff41);
+            opacity: 0.6;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+    <div id="super-overlay">SUPER</div>
+
+    <div class="container">
+        <div class="todo-app">
+            <h1>SENTINEL-X</h1>
+            
+            <div class="stat-container">
+                <div>
+                    <h3 style="font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">SYSTEM STATUS</h3>
+                    <div id="progressbar"><div id="progress"></div></div>
+                </div>
+                <p id="numbers" style="font-family: 'Courier Prime'; font-weight: bold; font-size: 1.1rem;">0 / 0</p>
+            </div>
+
+            <form class="input-area" id="todo-form">
+                <input type="text" id="task-input" placeholder="Initialize task..." autocomplete="off">
+                <button type="submit" id="add-btn"><i class="fa-solid fa-plus"></i></button>
+            </form>
+
+            <ul id="task-list"></ul>
+            
+        
+            <img class="DP" id="empty-img" src="My X Logo.png" alt="Sentinel Logo">
+        </div>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const taskList = document.getElementById('task-list');
+        const todoForm = document.getElementById('todo-form');
+        const emptyImg = document.getElementById('empty-img');
+        const progress = document.getElementById('progress');
+        const numbers = document.getElementById('numbers');
+        const superOverlay = document.getElementById('super-overlay');
+        const canvas = document.getElementById('matrix-canvas');
+
+        // --- 1. Scramble Text Animation ---
+        const scramble = (element, text) => {
+            const chars = "!<>-_\\/[]{}—=+*^?#________";
+            let iteration = 0;
+            const interval = setInterval(() => {
+                element.innerText = text.split("").map((char, index) => {
+                    if(index < iteration) return text[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                if(iteration >= text.length) clearInterval(interval);
+                iteration += 1/3;
+            }, 30);
+        };
+
+        // --- 2. Storage & Stats ---
+        const updateStats = () => {
+            const allItems = taskList.querySelectorAll('li');
+            const total = allItems.length;
+            const completed = taskList.querySelectorAll('.completed').length;
+            
+            const perc = total === 0 ? 0 : (completed / total) * 100;
+            progress.style.width = perc + "%";
+            numbers.innerText = `${completed} / ${total}`;
+            emptyImg.classList.toggle('hidden', total > 0);
+
+            if (total > 0 && completed === total) {
+                showSuper();
+            }
+            saveData();
+        };
+
+        const showSuper = () => {
+            superOverlay.style.display = 'block';
+            superOverlay.classList.add('glitch-anim');
+            canvas.style.opacity = "1";
+            
+            setTimeout(() => {
+                superOverlay.style.display = 'none';
+                superOverlay.classList.remove('glitch-anim');
+                canvas.style.opacity = "0.3";
+            }, 2500);
+        };
+
+        const saveData = () => {
+            const tasks = [];
+            document.querySelectorAll('#task-list li').forEach(li => {
+                tasks.push({
+                    text: li.querySelector('span').innerText,
+                    done: li.classList.contains('completed')
+                });
+            });
+            localStorage.setItem('sentinel_v2_data', JSON.stringify(tasks));
+        };
+
+        const loadData = () => {
+            const saved = JSON.parse(localStorage.getItem('sentinel_v2_data')) || [];
+            saved.forEach(t => addTask(t.text, t.done, false));
+            updateStats();
+        };
+
+        // --- 3. Task Management ---
+        const addTask = (text, isDone = false, isNew = true) => {
+            if (!text) return;
+
+            const li = document.createElement('li');
+            if(isDone) li.classList.add('completed');
+
+            li.innerHTML = `
+                <input type="checkbox" class="task-check" ${isDone ? 'checked' : ''}>
+                <span></span>
+                <button class="del-btn"><i class="fa-solid fa-fire"></i></button>
+            `;
+
+            taskList.appendChild(li);
+            const span = li.querySelector('span');
+            
+            if (isNew) {
+                scramble(span, text);
+            } else {
+                span.innerText = text;
+            }
+
+            li.querySelector('.task-check').addEventListener('change', (e) => {
+                li.classList.toggle('completed', e.target.checked);
+                updateStats();
+            });
+
+            li.querySelector('.del-btn').addEventListener('click', () => {
+                li.classList.add('burn-out');
+                setTimeout(() => {
+                    li.remove();
+                    updateStats();
+                }, 600);
+            });
+
+            updateStats();
+        };
+
+        todoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = taskInput.value.trim();
+            if(val) {
+                addTask(val);
+                taskInput.value = '';
+            }
+        });
+
+        // --- 4. Matrix Background ---
+        const ctx = canvas.getContext('2d');
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const alphabet = "01010101ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const drops = Array(Math.floor(canvas.width/20)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff41";
+            ctx.font = "15px monospace";
+            drops.forEach((y, i) => {
+                const char = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(char, i * 20, y * 20);
+                if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(draw, 35);
+
+        
+        loadData();
+    </script>
+</body>
+
+</html>
