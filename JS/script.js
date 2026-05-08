@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = total ? `${(completed / total) * 100}%` : '0%';
         progressNumber.textContent = `${completed} / ${total}`;
         
-        // Toggle Logo visibility
+        
         if (dpImage) dpImage.style.display = total === 0 ? 'block' : 'none';
 
         if (total > 0 && completed === total) {
@@ -31,21 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const addTask = (text, completed = false) => {
-    if (!text) return;
+        if (!text) return;
 
-    const li = document.createElement('li');
-    if (completed) li.classList.add('completed');
-    
-    li.innerHTML = `
-        <input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>
-        <span>${text}</span>
-        <div class="task-buttons">
-            <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
-            <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-        </div>
-    `;
-
-        // Secret Access Logic
+        
         if (text === "root--access") {
             document.body.classList.add('blink-mode');
             setTimeout(() => {
@@ -54,23 +42,37 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        
         const li = document.createElement('li');
         if (completed) li.classList.add('completed');
         
         li.innerHTML = `
             <input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>
             <span>${text}</span>
-            <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+            <div class="task-buttons">
+                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+            </div>
         `;
 
+        // Checkbox Logic
         li.querySelector('.checkbox').addEventListener('change', () => {
             li.classList.toggle('completed');
             updateProgress();
         });
 
+        // Delete Logic
         li.querySelector('.delete-btn').addEventListener('click', () => {
             li.remove();
             updateProgress();
+        });
+
+        li.querySelector('.edit-btn').addEventListener('click', () => {
+            const newText = prompt("Edit your task:", text);
+            if (newText !== null && newText.trim() !== "") {
+                li.querySelector('span').textContent = newText.trim();
+                saveTasks();
+            }
         });
 
         taskList.appendChild(li);
