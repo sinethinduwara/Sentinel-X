@@ -12,7 +12,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* Fixed background path */
     background: url('../assets/mood.webp') no-repeat center center/cover;
     background-attachment: fixed;
 }
@@ -89,10 +88,6 @@ body {
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.2);
     color: #122121;
-    font-family: 'Jost', sans-serif;
-}
-.input-area input:focus {
-    border-color: #096A61;
 }
 
 .input-area button {
@@ -105,60 +100,75 @@ body {
     cursor: pointer;
 }
 
+
 #task-list { width: 100%; list-style: none; }
+
 #task-list li {
-   display: flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.15); 
     margin-bottom: 12px;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border-radius: 12px;
-    backdrop-filter: blur(5px);
+    transition: background 0.2s;
 }
-.task-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+
+
+#task-list li:hover {
+    background: rgba(255, 255, 255, 0.25);
 }
-.task-buttons button {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    border: none;
+
+
+#task-list li .checkbox {
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid #096A61;
+    border-radius: 50%;
+    appearance: none;
     cursor: pointer;
+    margin-right: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;
-    color: white;
-}
-.edit-btn {
-    background: rgba(255, 255, 255, 0.3);
-    color: #096A61 !important;
 }
 
-.delete-btn {
-    background: rgba(255, 255, 255, 0.3);
-    color: #8b0000 !important;
+#task-list li .checkbox:checked {
+    background: #096A61;
+    border: none;
 }
 
-.task-buttons button:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.5);
+#task-list li .checkbox:checked::after {
+    content: '✔';
+    color: #fff;
+    font-size: 12px;
 }
 
-.completed span { text-decoration: line-through; opacity: 0.6; }
 
-.DP { width: 100px; display: block; margin: 0 auto; }
-
-/* Secret Blink Mode */
-.blink-mode {
-    animation: extremeGlitch 0.1s steps(1) infinite;
+#task-list li.completed span {
+    text-decoration: line-through;
+    opacity: 0.6;
 }
 
-@keyframes extremeGlitch {
-    0% { filter: invert(0); }
-    50% { filter: invert(1) hue-rotate(180deg); background: red; }
-    100% { filter: invert(0); }
+.task-buttons {
+    display: flex;
+    gap: 8px;
 }
+
+.task-buttons button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit-btn { color: #096A61; }
+.delete-btn { color: #8b0000; }
+
+.edit-btn:hover { background: #096A61; color: #fff; }
+.delete-btn:hover { background: #8b0000; color: #fff; }
+
+.DP { width: 100px; display: block; margin: 20px auto; }
