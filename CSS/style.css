@@ -1,39 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Jost:wght@400;600&display=swap');
 
-
 * {
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 body {
-
     font-family: 'Jost', sans-serif; 
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(./assets/mood.webp) no-repeat center center/cover;
+    background: url('../assets/mood.webp') no-repeat center center/cover;
     background-attachment: fixed;
-
 }
 
 .container {
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     padding: 0 20px;
-
 }
 
 .todo-app {
-
     width: 100%;
     max-width: 400px;
     padding: 2rem;
@@ -47,21 +39,11 @@ body {
     box-shadow: 0 0 100px rgba(0,0,0,0.5);
     border: 3px solid rgba(255,255,255,0.18);
     backdrop-filter: blur(10px);
-
 }
 
-
-
-.todo-app h1 {
-
-    font-size: 2rem;
-
-}
-
-
+.todo-app h1 { font-size: 2rem; text-align: center; }
 
 .stat-container {
-
     width: 100%;  
     padding: 15px 20px;
     border-radius: 10px;
@@ -70,26 +52,17 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-
 }
-
-
-
 .details {
-
     flex: 1;
-
 }
-
 .details h3 {
-
     color: #000;
     font-size: 1rem;
 
 }
 
 #progressbar {
-
     width: 100%;
     height: 10px;
     background: rgba(255, 255, 255, 0.1);
@@ -97,23 +70,16 @@ body {
     position: relative;
     margin-top: 15px;
     overflow: hidden;
-
 }
 
-
-
 #progress {
-
     width: 0%;
     height: 100%;
     background: #096A61;
-    border-radius: 20px;
     transition: width 0.3s ease;
-
 }
 
 #numbers {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,22 +90,16 @@ body {
     border-radius: 50%;
     font-size: 1.2rem;
     font-weight: bold;
-
 }
 
-
-
-.input-area {
-
+.input-area { 
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 
 }
-
 .input-area input {
-
     flex: 1;
     padding: 12px 17px;
     border: none;
@@ -147,21 +107,12 @@ body {
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
-
 }
-
-
-
 .input-area input::placeholder {
-
     color: rgba(255, 255, 255, 0.7);
-
 }
-
-
 
 .input-area button {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,20 +127,13 @@ body {
     transition: all 0.2s ease;
     width: 45px;
     height: 45px;
-
 }
-
-
-
 .input-area button:hover {
 
     transform: scale(1.1);
     background: #0b8a7e;
 
 }
-
-
-
 .todos-container {
 
     width: 100%;
@@ -200,28 +144,9 @@ body {
 
 }
 
-
-
-.DP {
-
-    width: 100px;
-    margin-top: 20px;
-
-}
-
-
-
-#task-list {
-
-    width: 100%;
-    list-style: none;
-
-}
-
-
+#task-list { width: 100%; list-style: none; }
 
 #task-list li {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -232,21 +157,16 @@ body {
     font-size: 1rem;
     color: #122121;
     transition: all 0.2s ease;
-
 }
 
 
 
 #task-list li:hover {
-
     background: rgba(255, 255, 255, 0.2);
-
 }
 
 
-
 #task-list li .checkbox {
-
     min-width: 20px;
     height: 20px;
     border: 2px solid #fff;
@@ -254,19 +174,27 @@ body {
     appearance: none;
     cursor: pointer;
     margin-right: 10px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #task-list li .checkbox:checked {
-
     background: #096A61;
     border: none;
     position: relative;
-
+}
+#task-list li span {
+    flex: 1; 
+    word-break: break-word; 
+    overflow-wrap: anywhere; 
+    white-space: normal; 
+    padding-right: 10px;
+    font-size: 1rem;
+    color: #122121;
 }
 
 #task-list li .checkbox:checked::after {
-
     content: '✔';
     color: #fff;
     font-size: 12px;
@@ -274,9 +202,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
-
 #task-list li span {
 
     flex: 1;
@@ -284,23 +210,18 @@ body {
 
 }
 
+
 #task-list li.completed span {
-
     text-decoration: line-through;
-     opacity: 0.6;
-
+    opacity: 0.6;
 }
 
-
 .task-buttons {
-
     display: flex;
     gap: 8px;
-
 }
 
 .task-buttons button {
-
     background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 8px;
@@ -308,16 +229,17 @@ body {
     height: 32px;
     color: #fff;
     cursor: pointer;
-    transition: all 0.2s ease;
-
+    transition: 0.2s ease;
 }
-
 
 
 .task-buttons .edit-btn:hover { background: #044663; }
 .task-buttons .delete-btn:hover { background: #8b0000; }
 
 
+.DP { width: 100px; display: block; margin: 20px auto; }
+
+/* Secret Blink Mode Class */
 .blink-mode {
     animation: extremeGlitch 0.1s steps(1) infinite;
     pointer-events: none;
