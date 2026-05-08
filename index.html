@@ -1,85 +1,42 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, intial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentinel-X</title>
     <link rel="icon" type="image/png" href="assets/My X Logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
-
 </head>
-
-   <body>
-   
-
+<body>
+    <div class="container">
         <div class="todo-app">
-
-            <h1> Sentinel-X</h1>
-
+            <h1>Sentinel-X</h1>
             <div class="stat-container">
-
                 <div class="details">
-
                     <h3>Keep it Up!</h3>
-
                     <div id="progressbar">
-
                         <div id="progress"></div>
-
                     </div>
-
                 </div>
-
                 <div class="start-number">
-
                     <p id="numbers">0 / 0</p>
-
                 </div>
-
             </div>
 
-            <form class="input-area">
-
-                <input type="text" id="task-input" placeholder="Add a new task...">
-
+            <form class="input-area" id="todo-form">
+                <input type="text" id="task-input" placeholder="Add a new task..." autocomplete="off">
                 <button type="submit" id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
-
             </form>
 
             <div class="todos-container">
-
                 <ul id="task-list"></ul>
-
-                <img class="DP" src="My X Logo.png" alt="SUPER COOL DP">
-
+                <img class="DP" src="assets/My X Logo.png" alt="Sentinel Logo">
             </div>
-
         </div>
-
     </div>
 
-
-   
-
-    </body>
-
-
-
-<script src="JS/script.js"></script>
-
-
-
- <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.9.1/tsparticles.confetti.bundle.min.js"></script>
-
-         
-
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.9.1/tsparticles.confetti.bundle.min.js"></script>
+    <script src="JS/script.js"></script>
+</body>
 </html>
