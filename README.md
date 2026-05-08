@@ -46,6 +46,11 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 *   **The Overflow:** Fixed the text that was trying to escape the boxes using some CSS `word-break` magic.
 
 ---
+### 💻Tech Stack
+*   **HTML5**
+*   **CSS3**
+*   **JavaScript**
+---
 
 ### ❤️ Special Thanks
 *   **My Parents:** For the power supply and the food that kept me alive.
