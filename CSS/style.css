@@ -84,10 +84,15 @@ body {
 .input-area input {
     flex: 1;
     padding: 12px 17px;
-    border: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    outline: none;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.2);
-    color: #000;
+    color: #122121;
+    font-family: 'Jost', sans-serif;
+}
+.input-area input:focus {
+    border-color: #096A61;
 }
 
 .input-area button {
@@ -102,13 +107,45 @@ body {
 
 #task-list { width: 100%; list-style: none; }
 #task-list li {
-    display: flex;
+   display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.15);
-    margin-bottom: 10px;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    margin-bottom: 12px;
+    padding: 8px 15px;
     border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+.task-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.task-buttons button {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: white;
+}
+.edit-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: #096A61 !important;
+}
+
+.delete-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: #8b0000 !important;
+}
+
+.task-buttons button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .completed span { text-decoration: line-through; opacity: 0.6; }
