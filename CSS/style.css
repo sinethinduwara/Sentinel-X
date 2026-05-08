@@ -29,7 +29,7 @@ body {
     background: url(mood.webp) no-repeat center center/cover;
 
     background-attachment: fixed;
-    background: url(../mood.webp) no-repeat center center/cover;
+    background: url(..assets/mood.webp) no-repeat center center/cover;
     background-attachment: fixed;
 
 }
