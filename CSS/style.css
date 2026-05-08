@@ -183,6 +183,14 @@ body {
     background: #096A61;
     border: none;
     position: relative;
+#task-list li span {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    color: #122121;
+    padding-right: 10px;
 }
 
 #task-list li .checkbox:checked::after {
@@ -229,51 +237,17 @@ body {
 
 
 .DP { width: 100px; display: block; margin: 20px auto; }
-#task-list li span {
-    flex: 1; 
-    word-break: break-word; 
-    overflow-wrap: anywhere; 
-    white-space: normal; 
-    padding-right: 10px;
-    font-size: 1rem;
-    color: #122121;
-}
-/* Secret Blink Mode Class */
+/* Blink Mode */
 .blink-mode {
-    animation: extremeGlitch 0.15s steps(1) infinite;
+    animation: extremeGlitch 0.15s steps(1) infinite !important;
     pointer-events: none;
     user-select: none;
 }
 
-/* Glitch Animation Logic */
 @keyframes extremeGlitch {
-    0% { 
-        opacity: 1; 
-        filter: invert(0) contrast(1.2); 
-        transform: scale(1) translate(0); 
-    }
-    20% { 
-        filter: invert(1) hue-rotate(180deg); 
-        transform: skew(15deg) translate(-5px, 5px); 
-        background-color: #ff0000; 
-    }
-    40% { 
-        opacity: 0.8; 
-        filter: contrast(10) brightness(2); 
-        transform: scale(1.05) translate(10px, -5px); 
-    }
-    60% { 
-        filter: invert(1) sepia(1) saturate(5); 
-        transform: skew(-15deg) translate(-10px, 10px); 
-        background-color: #0000ff; 
-    }
-    80% { 
-        opacity: 0.9; 
-        filter: hue-rotate(90deg); 
-        transform: scale(0.95) translate(5px, 5px); 
-    }
-    100% { 
-        filter: invert(0); 
-        transform: scale(1) translate(0); 
-    }
+    0% { opacity: 1; filter: invert(0); transform: scale(1); }
+    20% { filter: invert(1); background-color: red; transform: skew(10deg); }
+    40% { filter: contrast(5); transform: scale(1.1); }
+    60% { filter: invert(1); background-color: blue; transform: skew(-10deg); }
+    100% { filter: invert(0); }
 }
