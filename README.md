@@ -19,8 +19,12 @@
 ---
 
 ### 🛠️ Features
-
-*   **Multi-Domain Tracking:** Whether it’s **Cisco Networking**, **Physics**, or **Hardware Engineering**, Sentinel-X handles it all.
+*  **Task Management :** Not only regular tasks, but you can edit and "Burn" (delete) tasks at any time & There are separate status checkboxes for each task
+*  **System Status :** The progress bar updates as you work.
+*  **No Data Loss :**  Because it uses the LocalStorage API, your data is not deleted even if you close or refresh the browser. The data is safe until you delete it.
+*  **Easter Egg :** root--access
+*  **Mission Accomplished:** Once you complete all the tasks, celebrate with a Confetti rain. This is done using custom logic and the Confetti API.
+* **Multi-Domain Tracking :** Whether it’s **Cisco Networking**, **Physics**, or **Hardware Engineering**, Sentinel-X handles it all.
 
 ---
 
@@ -50,6 +54,25 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 
 ---
 ### 💻Tech Stack
+
+*   **LocalStorage -** This is the "memory" of the app. Normally, data is deleted when a web page is refreshed, but this does not happen. **(Saving)** When you add a task or click a checkbox, the entire task list is taken as an Array and converted to a string using JSON.stringify(). It is then saved in the browser using localStorage.setItem('tasks', ...)
+  
+*   **Loading :When the page loads, localStorage.getItem('tasks') takes that string, converts it back into an Array using JSON.parse(), and brings the data to the screen**
+  
+*   **Maths(MY <3)** The progress bar and the score inside that circle (0/5) work with a simple mathematical equation: The app always looks at the total number of tasks from tasklist.children.length. The checkbox gets the count of those that are "checked" (Completed count) separately & The resulting value is given to the progress bar as the CSS width.
+  
+*   **The Secret Mode : (MY <3)** This is my *"Special feature"*. It works with an if condition inside the addTask function : when you type something in the input box and press the "Add" button, it checks if that text is "root--access". **(If true)** instead of adding a normal task, it glitches the screen via document.body.classList.add('blink-mode') and switches the page to abc.html after a second with a setTimeout.
+
+### Matrix Rain Logic
+
+* **The Drops Array :** An array containing one drop for each column on the screen (this has the 'y' coordinate).
+  
+* **The Fading Effect :** The special thing about this is that it fades away the old text without erasing it (Trail effect). It does this by drawing a very thin transparent black layer (rgba(0, 0, 0, 0.05)) instead of completely blackening the screen every frame.
+  
+* **Randomization :** When the letters are finished falling down, Math.random() is used to make them go up again. That's why the letters fall at random times like rain.
+
+
+
 *   **HTML5**
 *   **CSS3**
 *   **JavaScript**
