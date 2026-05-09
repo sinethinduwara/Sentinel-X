@@ -43,7 +43,7 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 *   **Desktop:** Open in **Chrome** -> **Settings** -> **Install Sentinel-X**. Now it's a real app!
 *   **Mobile:** 
     *   **Android:** Chrome Menu -> **Install App**.
-    *   **iOS:** Safari Share -> **Add to Home Screen**. 
+    *   **iOS:** Safari Share -> **Add to Home Screen**. [Click](https://sinethinduwara.github.io/Sentinel-X)
 
 ---
 
