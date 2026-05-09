@@ -47,10 +47,11 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 
 ---
 
-### 🏗️ The "Bug" Cemetery (What I Fixed)
-*   **The Matrix Rain:** It wasn't raining... it was just broken. Now it's fully operational.
-*   **Syntax Errors:** Found 2 errors hiding in the shadows and terminated them.
-*   **The Overflow:** Fixed the text that was trying to escape the boxes using some CSS `word-break` magic.
+## 🏗️ The "Bug" Cemetery (What I Fixed)
+* **Blink-Mode Fix:** Fixed the issue where the glitch animation wouldn't trigger. The system now correctly "blinks" before entering Underground Mode.
+* **Path Resolution:** Fixed broken links between GitHub files; the system now correctly loads `abc.html` and other assets.
+* **Matrix Rain:** Debugged the Canvas rendering logic; the code-rain is now fully operational.
+* **UI Overflow:** Applied CSS `word-break` magic to prevent long text from escaping the terminal boxes.
 
 ---
 ### 💻Tech Stack
