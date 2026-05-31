@@ -6,14 +6,12 @@
 **A Hacker themed To-Do App for Developers & Cool Hackers.**
 
 
-> *"Because why use a boring to-do list when you can feel like a hacker in a movie?"* ⚡
-
 [Visit my Website](https://sinethinduwara.github.io/Sentinel-X)
 ---
 <img width="1408" height="768" alt="Sentinel-X" src="https://github.com/user-attachments/assets/be69e82f-faa4-40b5-92cf-20409fd24b45" />
 
 
-### Sentinel-X Overview
+### What is a Sentinel-X 
 **Sentinel-X** is a minimalist, cyber-themed productivity tool. I really wanted to build this because I live by that "Student by Day, Developer by Night" 🚀 motto. I use a normal desktop for my studies, but I wanted to capture a specific vibe when working in virtualBox or the WSL terminal. working late at night under bright lights hurts my eyes so I developed this with a "hacker" aesthetic—blending hidden elements with a visible interface to get into that flow.
 
 ---
@@ -22,20 +20,15 @@
 *  **Task Management :** Not only regular tasks, but you can edit and "Burn" (delete) tasks at any time & There are separate status checkboxes for each task
 *  **System Status :** The progress bar updates as you work.
 *  **No Data Loss :**  Because it uses the LocalStorage API, your data is not deleted even if you close or refresh the browser. The data is safe until you delete it.
-*  **Easter Egg :** root--access
+*  **Enter Boom Button :** root--access
 *  **Mission Accomplished:** Once you complete all the tasks, celebrate with a Confetti rain. This is done using custom logic and the Confetti API.
 * **Multi-Domain Tracking :** Whether it’s **Cisco Networking**, **Physics**, or **Hardware Engineering**, Sentinel-X handles it all.
 
 ---
 
-### 🕵️‍♂️ classified: The Secret Command
-There are rumors of a hidden diagnostic layer within the system. We can neither confirm nor deny its existence. 
+### The Secret Command
 
-However, if you find yourself at the **To-Do input terminal**, you might try entering the forbidden cipher:
-`rood--access`
-
-**BOOM!** ...something *puduma sahagatha* will happen. Just don't say I didn't warn you! 
-
+pls Enter the 'root--access' command & you'll go to the under world to-do
 ---
 
 ### 🚀 Setup Instructions
@@ -47,14 +40,14 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 
 ---
 
-## 🏗️ The "Bug" Cemetery (What I Fixed)
+##  The Bug Fixed
 * **Blink-Mode Fix:** Fixed the issue where the glitch animation wouldn't trigger. The system now correctly "blinks" before entering Underground Mode.
 * **Path Resolution:** Fixed broken links between GitHub files; the system now correctly loads `abc.html` and other assets.
 * **Matrix Rain:** Debugged the Canvas rendering logic; the code-rain is now fully operational.
 * **UI Overflow:** Applied CSS `word-break` magic to prevent long text from escaping the terminal boxes.
 
 ---
-### 💻Tech Stack
+### 💻 How to Make
 
 *   **LocalStorage -** This is the "memory" of the app. Normally, data is deleted when a web page is refreshed, but this does not happen. **(Saving)** When you add a task or click a checkbox, the entire task list is taken as an Array and converted to a string using JSON.stringify(). It is then saved in the browser using localStorage.setItem('tasks', ...)
   
@@ -84,4 +77,4 @@ However, if you find yourself at the **To-Do input terminal**, you might try ent
 *   **Hack Club:** For the inspiration to keep shipping.
 *   **MyComputer:** For not giving up on me during the long renders.
 
-**Sentinel-X: Mission Accomplished.** 🛡️✨
+
