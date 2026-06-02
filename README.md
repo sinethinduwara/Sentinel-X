@@ -25,11 +25,14 @@ Sentinel-x is actually something I created for my own convenience. I do my codin
 ---
 ### MY Stress up times ###
 I faced a lot of problems while making this. I created two styles in CSS and finally chose one. Also, after uploading to GitHub, there were issues with files, folders, and bugs, so the workload increased, and I had to learn some CSS and JavaScript. There was also a problem where the Matrix effect wasn't working due to a logic issue, but I fixed that too. Finally, after changing the blink mode three times, I built the web app.
+
 ---
+
 ### How to Used & Setup ###
-**Mobile Phone(Iso/Android)** - Frist go to your phone web browser or Click this btn [Click](https://sinethinduwara.github.io/Sentinel-X)
-Iso Users : ** Safari Share -> **Add to Home Screen** 
-Android users: Chrome Menu -> **Install App**
+* **Mobile Phone(Iso/Android)** - Frist go to your phone web browser or Click this btn [Click](https://sinethinduwara.github.io/Sentinel-X)
+* Iso Users : ** Safari Share -> **Add to Home Screen** 
+* Android users: Chrome Menu -> **Install App**
+  
 **All Devices can use website.** 
 
 ---
